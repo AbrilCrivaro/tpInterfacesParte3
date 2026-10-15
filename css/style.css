@@ -1,0 +1,826 @@
+
+:root {
+    --color-primario: #7B61FF;
+    --color-primario-sombra-1: #5E46D1;
+    --color-primario-sombra-2: #422FA3;
+    --color-primario-sombra-3: #281B75;
+    --color-primario-luz: #9B86FF;
+    --color-primario-luz-2:#BCAFFF;
+    --color-fondo: #0C0D14; 
+    --color-fondo-oscuro: #12131D;
+    --color-secundario: #181926; 
+    --color-secundario-luz-1: #27293D;
+    --color-secundario-luz-2: #383A54;
+    --color-secundario-luz-3: #494D6D;
+    --color-acento: #FF6600;  
+    --color-texto: #EDEEF6;
+    --color-texto-secundario: #B7B9CF; 
+    --color-error: #EA6B6B; 
+    --color-exito: #93E4BC; 
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--color-secundario-luz-2) var(--color-fondo);
+}
+
+body {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font: 400 16px/24px Nunito, system-ui, sans-serif;
+    min-height: 100vh;
+}
+body.sin-scroll {
+    overflow: hidden;
+}
+
+/* links heredan el color del texto y no llevan subrayado */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* imagenes no se pasan del ancho de su contenedor. */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button, input, textarea {
+    font: inherit;
+    color: inherit;
+}
+button {
+    cursor: pointer;
+    border: 0;
+    background: none;
+}
+
+/* borde violeta cuando se navega con el teclado (accesibilidad) */
+:focus-visible {
+    outline: 2px solid var(--color-primario-luz);
+    outline-offset: 2px;
+}
+
+/* contenedor central: limita el ancho máximo y deja márgenes a los costados. */
+.contenedor {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+h1, h2, h3 {
+    font-weight: 800;
+}
+
+.texto-ayuda {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-texto-secundario);
+}
+
+main {
+    padding-top: 32px;
+}
+
+/*
+   cada boton tiene su animacion al pasar el mouse
+*/
+
+.boton {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    cursor: pointer;
+}
+.boton.boton-grande {
+    height: 48px;
+    padding: 0 24px;
+}
+/* botón deshabilitado */
+.boton:disabled {
+    opacity: .45;
+    pointer-events: none;
+}
+
+.boton-primario {
+    background: var(--color-primario-sombra-1);
+    color: var(--color-texto);
+}
+.boton-primario:hover {
+    background: var(--color-primario-sombra-2);
+    transform: translateY(-3px); /* sube 3px */
+    box-shadow: 0 10px 24px var(--color-primario-sombra-3); /* brillo violeta */
+}
+.boton-primario:active {
+    transform: translateY(0);
+}
+
+.boton-secundario {
+    background: var(--color-secundario-luz-2);
+    height: 42px;
+    padding: 0 20px;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-texto-secundario);
+    background: var(--color-secundario-luz-2);
+    white-space: nowrap;      
+}
+.boton-secundario::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-secundario-luz-3);
+    transform: scaleX(0); /* el relleno arranca con ancho 0 */
+    transform-origin: left;
+    transition: transform .35s;
+    z-index: -1;
+}
+.boton-secundario:hover::before {
+    transform: scaleX(1); /* y al pasar el mouse se estira hasta ocupar todo el botón */
+}
+
+.boton-social {
+    background: var(--color-fondo-oscuro);
+    border: 1px solid var(--color-secundario-luz-2);
+    flex: 1;
+    height: 44px;
+}
+.boton-social:hover {
+    border-color: var(--color-primario-luz);
+    background: var(--color-secundario-luz-1);
+}
+.boton-social:hover b {
+    animation: sacudir-icono .5s;
+}
+.boton-social b {
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+}
+
+/* icnos sociales */
+@keyframes sacudir-icono {
+    25% {
+        transform: rotate(-18deg) scale(1.2);
+    }
+    75% {
+        transform: rotate(18deg) scale(1.2);
+    }
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    margin-top: -28px;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: var(--color-secundario-luz-2);
+    border: 1px solid var(--color-texto-secundario);
+    z-index: 5;
+    transition: background .25s, border-color .25s;
+    font-size: 30px;
+    display: grid;
+    place-items: center;
+}
+.flecha span {
+    transition: transform .25s;
+}
+.flecha:hover {
+    background: var(--color-secundario-luz-3);
+}
+.flecha.flecha-siguiente:hover span {
+    transform: translateX(3px);
+}
+.flecha.flecha-anterior:hover span {
+    transform: translateX(-3px);
+}
+.flecha:disabled {
+    opacity: .35;
+    pointer-events: none;
+}
+
+/* posicion */
+.flecha-anterior {
+    left: 4px;
+}
+
+.flecha-siguiente {
+    right: 4px;
+}
+
+.encabezado {
+    position: sticky; /* se queda fijo arriba al hacer scroll */
+    top: 0;
+    z-index: 30;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    background: var(--color-secundario);
+    border-bottom: 1px solid var(--color-secundario-luz-2);
+}
+.encabezado .encabezado-logo img {
+    height: 36px;
+    width: auto;
+}
+
+/* menu */
+.boton-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    transition: .2s;
+    flex: none;
+}
+.boton-icono:hover {
+    background: var(--color-secundario-luz-1);
+}
+.boton-icono .icono-abierto {
+    display: none;
+}
+.boton-icono.abierto .icono-cerrado {
+    display: none;
+}
+.boton-icono.abierto .icono-abierto {
+    display: block;
+}
+
+.buscador {
+    position: relative;
+    flex: 1;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.buscador input {
+    width: 100%;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--color-secundario-luz-2);
+    background: var(--color-secundario-luz-1);
+    padding: 0 12px;
+    font-size: 13px;
+}
+
+/* oculto hasta que JS le agrega .visible. */
+.buscador-resultados {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    background: var(--color-secundario);
+    border: 1px solid var(--color-secundario-luz-2);
+    border-radius: 8px;
+    display: none;
+    overflow: hidden;
+    z-index: 5;
+}
+.buscador-resultados.visible {
+    display: block;
+}
+.buscador-resultados a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+.buscador-resultados a:hover {
+    background: var(--color-secundario-luz-1);
+}
+.buscador-resultados img {
+    width: 28px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.usuario {
+    position: relative;
+    flex: none;
+}
+
+.usuario-boton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    height: 40px;
+    padding: 0 6px;
+}
+.usuario-boton span {
+    display: none;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-texto-secundario) url("../assets/icons/icono-perfil.jpg") center / cover no-repeat;
+    border: 2px solid var(--color-primario-luz);
+}
+
+/* está invisible (opacity 0) y aparece con animación al agregar .visible. */
+.menu-perfil {
+    position: absolute;
+    right: 0;
+    top: 46px;
+    width: 256px;
+    background: var(--color-secundario);
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: 0 20px 50px #06070B;
+    opacity: 0;
+    transform: scale(.92);
+    transform-origin: top right;
+    pointer-events: none;
+    transition: .2s;
+    text-align: center;
+    font-size: 12px;
+}
+.menu-perfil.visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+.menu-perfil .avatar {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 8px;
+    border: 2px solid var(--color-primario-luz);
+}
+.menu-perfil small {
+    color: var(--color-texto-secundario);
+    display: block;
+    font-size: 12px;
+}
+.menu-perfil a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 8px;
+    border-radius: 6px;
+    color: var(--color-texto-secundario);
+}
+.menu-perfil a:hover {
+    background: var(--color-secundario-luz-1);
+    color: var(--color-texto);
+}
+.menu-perfil .menu-perfil-premium {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--color-texto);
+    font-weight: 800;
+    margin: 14px 0 4px;
+}
+.menu-perfil hr {
+    border: 0;
+    border-top: 1px solid var(--color-secundario-luz-2);
+    margin: 8px 0;
+}
+.menu-perfil svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+}
+
+/* Nombre con el lápiz al lado */
+.menu-perfil-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+/* queda fuera de la pantalla (translateX -100%) y se desliza al agregar .abierto. */
+.menu-lateral {
+    position: fixed;
+    inset: 56px auto 0 0; 
+    width: 280px;
+    z-index: 50;
+    background: var(--color-secundario);
+    scrollbar-color: var(--color-secundario-luz-2) var(--color-secundario);  /* barra, fondo */
+    padding: 12px;
+    overflow: auto;
+    transform: translateX(-100%); 
+    transition: transform .35s;
+}
+.menu-lateral.abierto {
+    transform: none;
+}
+.menu-lateral a {
+    display: flex;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+    transition: .2s;
+}
+.menu-lateral a:hover {
+    background: var(--color-secundario-luz-1);
+    color: var(--color-texto);
+    padding-left: 16px;
+}
+.menu-lateral h5 {
+    font-size: 11px;
+    padding: 14px 12px 4px;
+    color: var(--color-texto-secundario);
+}
+
+.seccion {
+    margin-top: 48px;
+}
+
+.seccion-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 28px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--color-secundario-luz-1), transparent);
+}
+.seccion-encabezado h2 {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 8px; /* entre el título y la descripción */
+}
+.seccion-encabezado .texto-ayuda {
+    font-size: 14px;
+    line-height: 22px;   
+    max-width: 520px;
+}
+.seccion-encabezado .seccion-cantidad {
+    margin-top: 12px;   
+    font-size: 14px;    
+    line-height: 16px;
+}
+.seccion-encabezado .boton {
+    flex-shrink: 0;      /* no se achica */
+}
+
+.carrusel {
+    --separacion-tarjetas: 12px;
+    position: relative;
+    overflow: hidden; /* oculta las tarjetas que quedan afuera */
+    padding: 40px 0 28px;
+}
+/* Mientras el carrusel "salta" de una copia de las tarjetas a otra (loop infinito),
+   se apagan las transiciones para que el salto no se note. */
+.carrusel.sin-transicion .carrusel-pista,
+.carrusel.sin-transicion .tarjeta-juego,
+.carrusel.sin-transicion .tarjeta-info {
+    transition: none !important;
+}
+
+/* JS la mueve con translateX y transition hace que se deslice suave. */
+.carrusel-pista {
+    height: 390px; 
+    display: flex;
+    gap: var(--separacion-tarjetas);
+    position: relative;
+    transition: transform .6s cubic-bezier(.22, .8, .3, 1); /* desplazamiento sea suave */
+    align-items: center;  
+}
+
+.tarjeta-juego {
+    flex: 0 0 auto;
+    width: 170px;
+    height: 255px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: var(--color-secundario-luz-1);
+    transition: width .5s, height .5s, box-shadow .5s;   /* sin opacity */
+    cursor: pointer;
+}
+.tarjeta-juego img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+    transition: transform .6s, filter .5s;
+}
+.tarjeta-juego:hover img {
+    transform: scale(1.06);
+}
+.tarjeta-juego.lejana img {
+    filter: brightness(.75);
+}
+.tarjeta-juego.vecina {
+    width: 206px;
+    height: 310px;
+}
+.tarjeta-juego.activa {
+    width: 260px;
+    height: 390px;
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--color-primario-luz), 0 18px 40px #000a;
+}
+
+.tarjeta-juego::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 -1px;
+    height: 68%;
+    background: linear-gradient(180deg,
+        rgba(6, 7, 11, 0)    0%,
+        rgba(6, 7, 11, .10) 10%,
+        rgba(6, 7, 11, .28) 22%,
+        rgba(6, 7, 11, .52) 36%,
+        rgba(6, 7, 11, .76) 50%,
+        rgba(6, 7, 11, .92) 64%,
+        rgba(6, 7, 11, .98) 80%,
+        rgba(6, 7, 11, 1)  100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.tarjeta-juego.activa::after,
+.tarjeta-juego:hover::after {
+    opacity: 1;
+}
+.tarjeta-juego.activa::after {
+    transition: opacity .3s .3s;
+}
+
+.tarjeta-juego .tarjeta-info {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 1;
+    padding: 24px 16px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s, padding .5s;   /* se apaga rapido, el padding acompaña a la card */
+}
+.tarjeta-juego .tarjeta-info h3 {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: font-size .5s, line-height .5s, margin-bottom .5s;
+}
+.tarjeta-juego .tarjeta-info .boton {
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    transition: height .5s, font-size .5s, background .25s, transform .25s, box-shadow .25s;
+}
+
+/* cards que no son la activa (al hacer hover): texto y botón más chicos */
+.tarjeta-juego:not(.activa) .tarjeta-info {
+    padding: 20px 10px 10px;
+}
+.tarjeta-juego:not(.activa) .tarjeta-info h3 {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+.tarjeta-juego:not(.activa) .tarjeta-info .boton {
+    height: 28px;
+    font-size: 12px;
+}
+
+.tarjeta-juego:hover .tarjeta-info {
+    opacity: 1;
+    pointer-events: auto;
+}
+.tarjeta-juego.activa .tarjeta-info {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity .3s .3s, padding .5s;   /* aparece cuando la card ya casi terminó de crecer */
+}
+.tarjeta-info .boton {
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+}
+.tarjeta-corona {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 26px;
+    height: 25px;
+    background: url("../assets/icons/icono-premium.svg") center / contain no-repeat;
+    pointer-events: none;
+    z-index: 1;
+    transition: width .5s, height .5s;
+}
+.tarjeta-juego.vecina .tarjeta-corona {
+    width: 34px;
+    height: 32px;
+}
+.tarjeta-juego.activa .tarjeta-corona {
+    width: 42px;
+    height: 40px;
+}
+
+.pie-de-pagina {
+    margin-top: 48px;
+    background: var(--color-secundario);
+    border-top: 1px solid var(--color-secundario-luz-2);
+    padding: 32px 0 24px;
+}
+
+.pie-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+}
+.pie-columnas img {
+    height: 36px;
+    width: auto;
+    margin-bottom: 10px;
+}
+.pie-columnas h4 {
+    color: var(--color-texto);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.pie-columnas a {
+    display: block;
+    padding: 2px 0;
+}
+.pie-columnas a:hover {
+    color: var(--color-primario-luz);
+}
+.pie-columnas small {
+    display: block;
+}
+.pie-columnas .redes {
+    display: flex;
+    flex-wrap: wrap;       
+    gap: 16px;
+}
+.pie-columnas .redes a {
+    padding: 0;
+    transition: transform .25s;
+}
+
+/* aviso emergente */
+.aviso {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 90;
+    width: min(92vw, 360px);
+    background: #12131D;
+    border: 1px solid var(--color-secundario-luz-2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex; /* oculto hasta que tiene .visible */
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 16px 40px #000b;
+    animation: aparecer-aviso .4s both;
+}
+.aviso b {
+    display: block;
+}
+.aviso span {
+    font-size: 12px;
+    color: var(--color-texto-secundario);
+}
+/* animación de entrada del aviso: sube y aparece. */
+@keyframes aparecer-aviso {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.aviso {
+    display: none; 
+}
+.aviso.visible {
+    display: flex;
+}
+
+.campo label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.campo-input {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--color-secundario-luz-3);
+    background: var(--color-fondo-oscuro);
+    padding: 0 12px;
+    font-size: 14px;
+    transition: .2s;
+}
+.campo-input:focus {
+    border-color: var(--color-primario-luz);
+    box-shadow: 0 0 0 3px #7b61ff33;
+    outline: 0;
+}
+
+.campo.con-error .campo-input {
+    border-color: var(--color-error);
+}
+
+/* texto rojo con el mensaje de error */
+.campo-mensaje {
+    font-size: 12px;
+    color: var(--color-error);
+    min-height: 0;
+}
+
+/* gira un elemento 360° (lo usan el loader y el "no soy un robot"). */
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* aparece subiendo un poquito (lo usan los comentarios y la bienvenida). */
+@keyframes subir-y-aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+
+@media (min-width: 700px) {
+    .contenedor {
+        padding: 0 32px;
+    }
+    .encabezado {
+        padding: 0 20px;
+    }
+    .encabezado .encabezado-logo img {
+        height: 48px;
+    }
+    .usuario-boton span {
+        display: inline;
+    }
+    .seccion-encabezado h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .carrusel {
+        
+        --separacion-tarjetas: 16px;
+    }
+    .pie-columnas {
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    }
+    .tarjeta-info h3 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+

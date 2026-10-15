@@ -1,0 +1,171 @@
+
+#pantalla-carga {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--color-fondo);
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 28px;
+    transition: opacity .6s;
+}
+#pantalla-carga.terminado {
+    opacity: 0;
+    pointer-events: none;
+}
+#pantalla-carga img {
+    width: 180px;
+    animation: latido 1.6s ease-in-out infinite;
+}
+
+/*anillo que se va llenando, lo controla la variable porcentaje-carga, que actualiza loading.js. */
+.carga-anillo {
+    --porcentaje-carga: 0;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(var(--color-primario) calc(var(--porcentaje-carga)*1%), var(--color-secundario-luz-1) 0); 
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000 0);
+}
+
+
+.carga-anillo-contenedor {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    display: grid;
+    place-items: center;
+}
+.carga-anillo-contenedor::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--color-primario);
+    animation: girar 1s linear infinite;
+}
+
+/* porcentaje */
+#carga-porcentaje {
+    position: absolute;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+/* barra de progreso */
+.carga-barra {
+    width: 220px;
+    height: 6px;
+    background: var(--color-secundario-luz-1);
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+#carga-barra-relleno {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-primario), var(--color-acento));
+}
+
+
+@keyframes latido {
+    50% {
+        transform: scale(1.06);
+        opacity: .7;
+    }
+}
+
+
+.destacado {
+    position: relative;
+    min-height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--color-secundario);
+    display: flex;
+    align-items: flex-end;
+     margin-top: 32px; 
+}
+.destacado img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center;
+}
+
+.destacado::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--color-secundario) 5%, #181926aa 45%, transparent 80%);
+}
+.destacado-texto {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px;
+}
+.destacado-texto .texto-ayuda {
+    color: var(--color-primario-luz-2);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+.destacado h1 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    margin: 0;
+}
+.destacado p {
+    color: var(--color-texto-secundario);
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 480px;
+    margin: 0;
+}
+
+
+
+
+@media (min-width: 700px) {
+    .destacado {
+        min-height: 480px; 
+        align-items: stretch;
+        margin-top: 32px;
+    }
+    
+    .destacado img {
+        width: 65%; 
+        left: auto; 
+        right: 0;   
+        object-position: right center;
+    }
+
+    .destacado-texto {
+    padding: 32px 34px;
+    max-width: 55%;
+    justify-content: space-between; 
+    }
+    .destacado h1 {
+    font-size: 44px;
+    line-height: 52px;
+    }
+
+    .destacado::after {
+        background: linear-gradient(90deg, var(--color-secundario) 35%, transparent 75%);
+    }
+}

@@ -1,0 +1,253 @@
+
+.pagina-acceso {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 24px;
+    background: radial-gradient(circle at 20% 30%, #1b1740, transparent 55%), var(--color-fondo);
+}
+
+.marca img {
+    width: 200px;
+    margin-bottom: 24px;
+}
+.marca h2 {
+    font-size: 26px;
+    line-height: 34px;
+    margin-bottom: 12px;
+}
+.marca p {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.tarjeta-formulario {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, var(--color-secundario-luz-1), var(--color-secundario));
+    border: 1px solid var(--color-secundario-luz-3);
+    border-radius: 16px;
+    padding: 24px;
+    display: grid;
+    gap: 12px;
+}
+.tarjeta-formulario h1 {
+    font-size: 28px;
+}
+
+.fila-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.fila-campos.fila-nickname-edad {
+    grid-template-columns: 1fr 84px;
+}
+
+.campo-contrasena {
+    position: relative;
+}
+.campo-contrasena .campo-input {
+    padding-right: 40px;
+}
+
+.boton-ver-contrasena {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    width: 36px;
+    height: 40px;
+    opacity: .7;
+}
+.boton-ver-contrasena:hover {
+    opacity: 1;
+}
+
+.enlace {
+    color: var(--color-primario-luz);
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.botones-sociales {
+    display: flex;
+    gap: 10px;
+}
+
+.separador-o {
+    font-size: 12px;
+    color: var(--color-texto-secundario);
+}
+
+
+.captcha {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f9f9f9;
+    color: #444;
+    border-radius: 3px;
+    padding: 14px;
+    width: 100%;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid #d3d3d3;
+}
+.captcha-casilla {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #c1c1c1;
+    background: #fff;
+    border-radius: 2px;
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    color: #1a9e4a;
+    font-weight: 900;
+}
+/* Mientras verifica, el cuadrado se convierte en un círculo que gira. */
+.captcha.cargando .captcha-casilla {
+    border-radius: 50%;
+    border-color: #4285F4 #0000;
+    animation: girar .7s linear infinite;
+}
+
+.temblor {
+    animation: temblar .4s;
+}
+
+/* Se mueve 8px a la izquierda y a la derecha */
+@keyframes temblar {
+    20%, 60% {
+        transform: translateX(-8px);
+    }
+    40%, 80% {
+        transform: translateX(8px);
+    }
+}
+
+.registro-exitoso {
+    position: fixed;
+    inset: 0;
+    z-index: 95;
+    background: #0C0D14ee;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 14px;
+    text-align: center;
+    animation: aparecer .4s both;
+    overflow: hidden;
+}
+.registro-exitoso svg {
+    width: 120px;
+    height: 120px;
+}
+/* El círculo y el tilde se dibujan animando stroke-dashoffset. */
+.registro-exitoso circle {
+    fill: none;
+    stroke: var(--color-primario);
+    stroke-width: 5;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    animation: dibujar-trazo .8s .2s forwards;
+    transform-origin: center;
+    transform: rotate(-90deg);
+}
+.registro-exitoso path {
+    fill: none;
+    stroke: var(--color-exito);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: dibujar-trazo .5s .9s forwards;
+}
+.registro-exitoso h2 {
+    font-size: 28px;
+    animation: subir-y-aparecer .6s 1.2s both;
+}
+.registro-exitoso p {
+    color: var(--color-texto-secundario);
+    animation: subir-y-aparecer .6s 1.4s both;
+}
+
+.confeti {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--color-confeti);
+    animation: explotar-confeti 1.4s 1s ease-out both;
+}
+
+@keyframes dibujar-trazo {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+}
+@keyframes explotar-confeti {
+    from {
+        transform: translate(0, 0) scale(0);
+    }
+    20% {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(var(--confeti-x), var(--confeti-y)) rotate(540deg) scale(.6);
+        opacity: 0;
+    }
+}
+.boton-destellos {
+    position: relative;
+}
+.boton-destellos .boton {
+    width: 100%;
+}
+.destello {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--tam);
+    height: var(--tam);
+    margin: calc(var(--tam) / -2) 0 0 calc(var(--tam) / -2);
+    background: url("../assets/telarana.png") center / contain no-repeat;
+    pointer-events: none;
+    z-index: 2;
+    animation: destello-telarana 1s ease-out both;
+    animation-delay: var(--retraso);
+}
+
+@keyframes destello-telarana {
+    0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+    35%  { opacity: 1; transform: scale(1) rotate(60deg); }
+    100% { opacity: 0; transform: scale(1.5) rotate(140deg); }
+}
+
+@media (min-width: 700px) {
+    .pagina-acceso {
+        grid-template-columns: 1fr 1fr;
+        padding: 48px 8%;
+    }
+    .marca {
+        justify-self: center;
+    }
+    .marca img {
+        width: 260px;
+    }
+    .marca h2 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}

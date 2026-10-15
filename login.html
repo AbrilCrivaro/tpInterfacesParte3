@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Iniciar sesión · Spider Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    
+    <div class="aviso" id="aviso" role="status">
+        <div><b></b><span></span></div>
+        <button aria-label="Cerrar">✕</button>
+    </div>
+
+    
+    <div class="pagina-acceso" id="vista-inicio-sesion">
+        <div class="marca">
+            <img src="assets/logo.png" alt="Spider Games">
+            <h2>Tu próxima aventura<br>está a un clic.</h2>
+            <p>Juegos gratis y premium en tu navegador.<br>Sumate a la red y jugá a tu ritmo.</p>
+        </div>
+
+       
+        <form class="tarjeta-formulario" id="formulario-inicio-sesion" novalidate>
+            <h1>Bienvenido de nuevo</h1>
+            <div class="campo">
+                <label for="inicio-email">Email</label>
+                <input class="campo-input" id="inicio-email" name="email" type="email" placeholder="peter@ejemplo.com" autocomplete="email">
+                <p class="campo-mensaje"></p>
+            </div>
+            <div class="campo">
+                <label for="inicio-contrasena">Contraseña</label>
+                <div class="campo-contrasena">
+                        <input class="campo-input" id="inicio-contrasena" name="contrasena" type="password" placeholder="••••••••" autocomplete="current-password">
+                        <button type="button" class="boton-ver-contrasena" aria-label="Mostrar contraseña"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.722 7.59687C14.1727 6.43968 13.519 5.49593 12.761 4.76562L11.966 5.56062C12.6143 6.18015 13.179 6.99062 13.6673 7.99999C12.3673 10.6906 10.522 11.9687 8.00009 11.9687C7.24311 11.9687 6.54587 11.8522 5.90837 11.6191L5.04697 12.4805C5.93238 12.8893 6.91676 13.0937 8.00009 13.0937C11.0032 13.0937 13.2438 11.5297 14.722 8.40156C14.7814 8.27575 14.8122 8.13834 14.8122 7.99921C14.8122 7.86008 14.7814 7.72267 14.722 7.59687ZM13.7287 2.58687L13.0626 1.91999C13.051 1.90837 13.0372 1.89915 13.022 1.89286C13.0068 1.88657 12.9906 1.88333 12.9742 1.88333C12.9577 1.88333 12.9415 1.88657 12.9263 1.89286C12.9111 1.89915 12.8973 1.90837 12.8857 1.91999L11.1768 3.62812C10.2346 3.14687 9.17571 2.90624 8.00009 2.90624C4.99697 2.90624 2.75634 4.4703 1.27822 7.59843C1.2188 7.72424 1.18799 7.86164 1.18799 8.00077C1.18799 8.1399 1.2188 8.27731 1.27822 8.40312C1.86874 9.64687 2.57967 10.6438 3.41103 11.3939L1.75759 13.0469C1.73417 13.0703 1.72101 13.1021 1.72101 13.1352C1.72101 13.1684 1.73417 13.2001 1.75759 13.2236L2.42462 13.8906C2.44806 13.914 2.47984 13.9272 2.51298 13.9272C2.54612 13.9272 2.5779 13.914 2.60134 13.8906L13.7287 2.76374C13.7403 2.75213 13.7495 2.73835 13.7558 2.72317C13.7621 2.708 13.7653 2.69173 13.7653 2.6753C13.7653 2.65888 13.7621 2.64261 13.7558 2.62744C13.7495 2.61226 13.7403 2.59848 13.7287 2.58687ZM2.3329 7.99999C3.63447 5.30937 5.47978 4.03124 8.00009 4.03124C8.85228 4.03124 9.62712 4.17749 10.3301 4.47484L9.23165 5.57327C8.71145 5.29572 8.1158 5.19271 7.5326 5.27944C6.94939 5.36617 6.4095 5.63805 5.99258 6.05498C5.57565 6.4719 5.30377 7.01179 5.21704 7.595C5.1303 8.17821 5.23331 8.77385 5.51087 9.29405L4.20743 10.5975C3.48603 9.96077 2.86415 9.09812 2.3329 7.99999ZM6.18759 7.99999C6.18786 7.72447 6.25313 7.45289 6.37808 7.20733C6.50303 6.96177 6.68414 6.74914 6.9067 6.58673C7.12926 6.42431 7.387 6.31668 7.65898 6.27259C7.93095 6.2285 8.20949 6.24918 8.47197 6.33296L6.27056 8.53437C6.21538 8.36162 6.18739 8.18134 6.18759 7.99999Z" fill="#B7B9CF"/>
+                            <path d="M7.93762 9.75C7.88355 9.75 7.83027 9.7475 7.77746 9.74265L6.95215 10.568C7.44854 10.7581 7.98937 10.8003 8.50926 10.6896C9.02915 10.5789 9.50583 10.3199 9.8817 9.94407C10.2576 9.56821 10.5165 9.09152 10.6272 8.57164C10.7379 8.05175 10.6957 7.51092 10.5056 7.01453L9.68027 7.83984C9.68512 7.89265 9.68762 7.94593 9.68762 8C9.68774 8.22984 9.64256 8.45746 9.55466 8.66984C9.46676 8.88221 9.33786 9.07518 9.17533 9.23771C9.0128 9.40023 8.81983 9.52913 8.60746 9.61704C8.39508 9.70494 8.16747 9.75012 7.93762 9.75Z" fill="#B7B9CF"/>
+                            </svg>
+                        </button>
+                    </div>
+                <p class="campo-mensaje"></p>
+            </div>
+            <a class="enlace" href="#">Olvidé mi contraseña</a>
+            <button class="boton boton-primario boton-grande" type="submit">Iniciar sesión</button>
+            <span class="separador-o">o continuá con</span>
+            <div class="botones-sociales">
+                <button type="button" class="boton boton-social" data-red-social="Google"><b class="icono-google"><svg width="18" height="18" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.9888 12.7339C23.9888 11.7097 23.9071 10.9622 23.7304 10.1871H12.2393V14.81H18.9843C18.8484 15.9589 18.114 17.689 16.4821 18.8516L16.4592 19.0064L20.0925 21.8712L20.3442 21.8968C22.656 19.7237 23.9888 16.5264 23.9888 12.7339Z" fill="#4285F4"/>
+                        <path d="M12.2393 24.9141C15.5438 24.9141 18.3179 23.8067 20.3442 21.8967L16.4821 18.8516C15.4486 19.5852 14.0615 20.0973 12.2393 20.0973C9.00273 20.0973 6.25576 17.9243 5.27654 14.9208L5.13301 14.9332L1.35507 17.909L1.30566 18.0488C3.31829 22.1181 7.45238 24.9141 12.2393 24.9141Z" fill="#34A853"/>
+                        <path d="M5.27634 14.9208C5.01797 14.1457 4.86844 13.3152 4.86844 12.457C4.86844 11.5988 5.01797 10.7684 5.26275 9.99331L5.25591 9.82823L1.43062 6.80457L1.30547 6.86516C0.475969 8.5538 0 10.4501 0 12.457C0 14.464 0.475969 16.3602 1.30547 18.0488L5.27634 14.9208Z" fill="#FBBC05"/>
+                        <path d="M12.2393 4.8167C14.5374 4.8167 16.0877 5.8271 16.9717 6.67147L20.4258 3.23884C18.3044 1.23187 15.5438 0 12.2393 0C7.45238 0 3.31829 2.7959 1.30566 6.86517L5.26295 9.99332C6.25576 6.98979 9.00273 4.8167 12.2393 4.8167Z" fill="#EB4335"/>
+                        </svg>
+                    </b> Google</button>
+                <button type="button" class="boton boton-social" data-red-social="Facebook"><b class="icono-facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12C24 5.37262 18.6274 0 12 0C5.37262 0 0 5.37262 0 12C0 17.9895 4.38825 22.954 10.125 23.8542V15.4688H7.07812V12H10.125V9.35625C10.125 6.34875 11.9166 4.6875 14.6576 4.6875C15.9705 4.6875 17.3438 4.92188 17.3438 4.92188V7.875H15.8306C14.3399 7.875 13.875 8.80003 13.875 9.74906V12H17.2031L16.6711 15.4688H13.875V23.8542C19.6117 22.954 24 17.9896 24 12Z" fill="#1877F2"/>
+                        <path d="M16.6711 15.4688L17.2031 12H13.875V9.74906C13.875 8.79994 14.3399 7.875 15.8306 7.875H17.3438V4.92188C17.3438 4.92188 15.9705 4.6875 14.6575 4.6875C11.9166 4.6875 10.125 6.34875 10.125 9.35625V12H7.07812V15.4688H10.125V23.8542C10.7453 23.9514 11.3722 24.0001 12 24C12.6278 24.0001 13.2547 23.9514 13.875 23.8542V15.4688H16.6711Z" fill="white"/>
+                        </svg>
+                    </b> Facebook</button>
+            </div>
+          
+            <a class="enlace" href="#registro">¿Sos nuevo? Creá tu cuenta</a>
+        </form>
+    </div>
+
+   
+    <div class="pagina-acceso" id="vista-registro" hidden>
+        <div class="marca">
+            <img src="assets/logo.png" alt="Spider Games">
+            <h2>Tu próxima aventura<br>está a un clic</h2>
+            <p>Juegos gratis y premium en tu navegador.<br>Sumate a la red y jugá a tu ritmo.</p>
+        </div>
+
+        <form class="tarjeta-formulario" id="formulario-registro" novalidate>
+            <h1>Creá tu cuenta</h1>
+            <div class="campo">
+                <label for="registro-nombre">Nombre y apellido</label>
+                <input class="campo-input" id="registro-nombre" name="nombre" autocomplete="name">
+                <p class="campo-mensaje"></p>
+            </div>
+            <!-- Dos campos en la misma fila -->
+            <div class="fila-campos fila-nickname-edad">
+                <div class="campo">
+                    <label for="registro-nickname">Nickname (opcional)</label>
+                    <input class="campo-input" id="registro-nickname" name="nickname">
+                    <p class="campo-mensaje"></p>
+                </div>
+                <div class="campo">
+                    <label for="registro-edad">Edad</label>
+                    <input class="campo-input" id="registro-edad" name="edad" type="number" inputmode="numeric">
+                    <p class="campo-mensaje"></p>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="registro-email">Email</label>
+                <input class="campo-input" id="registro-email" name="email" type="email" placeholder="peter@ejemplo.com" autocomplete="email">
+                <p class="campo-mensaje"></p>
+            </div>
+            <div class="fila-campos">
+                <div class="campo">
+                    <label for="registro-contrasena">Contraseña</label>
+                    <div class="campo-contrasena">
+                        <input class="campo-input" id="registro-contrasena" name="contrasena" type="password" placeholder="••••••••" autocomplete="new-password">
+                        <button type="button" class="boton-ver-contrasena" aria-label="Mostrar contraseña"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.722 7.59687C14.1727 6.43968 13.519 5.49593 12.761 4.76562L11.966 5.56062C12.6143 6.18015 13.179 6.99062 13.6673 7.99999C12.3673 10.6906 10.522 11.9687 8.00009 11.9687C7.24311 11.9687 6.54587 11.8522 5.90837 11.6191L5.04697 12.4805C5.93238 12.8893 6.91676 13.0937 8.00009 13.0937C11.0032 13.0937 13.2438 11.5297 14.722 8.40156C14.7814 8.27575 14.8122 8.13834 14.8122 7.99921C14.8122 7.86008 14.7814 7.72267 14.722 7.59687ZM13.7287 2.58687L13.0626 1.91999C13.051 1.90837 13.0372 1.89915 13.022 1.89286C13.0068 1.88657 12.9906 1.88333 12.9742 1.88333C12.9577 1.88333 12.9415 1.88657 12.9263 1.89286C12.9111 1.89915 12.8973 1.90837 12.8857 1.91999L11.1768 3.62812C10.2346 3.14687 9.17571 2.90624 8.00009 2.90624C4.99697 2.90624 2.75634 4.4703 1.27822 7.59843C1.2188 7.72424 1.18799 7.86164 1.18799 8.00077C1.18799 8.1399 1.2188 8.27731 1.27822 8.40312C1.86874 9.64687 2.57967 10.6438 3.41103 11.3939L1.75759 13.0469C1.73417 13.0703 1.72101 13.1021 1.72101 13.1352C1.72101 13.1684 1.73417 13.2001 1.75759 13.2236L2.42462 13.8906C2.44806 13.914 2.47984 13.9272 2.51298 13.9272C2.54612 13.9272 2.5779 13.914 2.60134 13.8906L13.7287 2.76374C13.7403 2.75213 13.7495 2.73835 13.7558 2.72317C13.7621 2.708 13.7653 2.69173 13.7653 2.6753C13.7653 2.65888 13.7621 2.64261 13.7558 2.62744C13.7495 2.61226 13.7403 2.59848 13.7287 2.58687ZM2.3329 7.99999C3.63447 5.30937 5.47978 4.03124 8.00009 4.03124C8.85228 4.03124 9.62712 4.17749 10.3301 4.47484L9.23165 5.57327C8.71145 5.29572 8.1158 5.19271 7.5326 5.27944C6.94939 5.36617 6.4095 5.63805 5.99258 6.05498C5.57565 6.4719 5.30377 7.01179 5.21704 7.595C5.1303 8.17821 5.23331 8.77385 5.51087 9.29405L4.20743 10.5975C3.48603 9.96077 2.86415 9.09812 2.3329 7.99999ZM6.18759 7.99999C6.18786 7.72447 6.25313 7.45289 6.37808 7.20733C6.50303 6.96177 6.68414 6.74914 6.9067 6.58673C7.12926 6.42431 7.387 6.31668 7.65898 6.27259C7.93095 6.2285 8.20949 6.24918 8.47197 6.33296L6.27056 8.53437C6.21538 8.36162 6.18739 8.18134 6.18759 7.99999Z" fill="#B7B9CF"/>
+                            <path d="M7.93762 9.75C7.88355 9.75 7.83027 9.7475 7.77746 9.74265L6.95215 10.568C7.44854 10.7581 7.98937 10.8003 8.50926 10.6896C9.02915 10.5789 9.50583 10.3199 9.8817 9.94407C10.2576 9.56821 10.5165 9.09152 10.6272 8.57164C10.7379 8.05175 10.6957 7.51092 10.5056 7.01453L9.68027 7.83984C9.68512 7.89265 9.68762 7.94593 9.68762 8C9.68774 8.22984 9.64256 8.45746 9.55466 8.66984C9.46676 8.88221 9.33786 9.07518 9.17533 9.23771C9.0128 9.40023 8.81983 9.52913 8.60746 9.61704C8.39508 9.70494 8.16747 9.75012 7.93762 9.75Z" fill="#B7B9CF"/>
+                            </svg>
+                        </button>
+                    </div><p class="texto-ayuda">Usá al menos 8 caracteres.</p>
+                    <p class="campo-mensaje"></p>
+                </div>
+                <div class="campo">
+                    <label for="registro-repetir-contrasena">Repetir contraseña</label>
+                    <div class="campo-contrasena">
+                        <input class="campo-input" id="registro-repetir-contrasena" name="repetirContrasena" type="password" placeholder="••••••••" autocomplete="new-password">
+                        <button type="button" class="boton-ver-contrasena" aria-label="Mostrar contraseña"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.722 7.59687C14.1727 6.43968 13.519 5.49593 12.761 4.76562L11.966 5.56062C12.6143 6.18015 13.179 6.99062 13.6673 7.99999C12.3673 10.6906 10.522 11.9687 8.00009 11.9687C7.24311 11.9687 6.54587 11.8522 5.90837 11.6191L5.04697 12.4805C5.93238 12.8893 6.91676 13.0937 8.00009 13.0937C11.0032 13.0937 13.2438 11.5297 14.722 8.40156C14.7814 8.27575 14.8122 8.13834 14.8122 7.99921C14.8122 7.86008 14.7814 7.72267 14.722 7.59687ZM13.7287 2.58687L13.0626 1.91999C13.051 1.90837 13.0372 1.89915 13.022 1.89286C13.0068 1.88657 12.9906 1.88333 12.9742 1.88333C12.9577 1.88333 12.9415 1.88657 12.9263 1.89286C12.9111 1.89915 12.8973 1.90837 12.8857 1.91999L11.1768 3.62812C10.2346 3.14687 9.17571 2.90624 8.00009 2.90624C4.99697 2.90624 2.75634 4.4703 1.27822 7.59843C1.2188 7.72424 1.18799 7.86164 1.18799 8.00077C1.18799 8.1399 1.2188 8.27731 1.27822 8.40312C1.86874 9.64687 2.57967 10.6438 3.41103 11.3939L1.75759 13.0469C1.73417 13.0703 1.72101 13.1021 1.72101 13.1352C1.72101 13.1684 1.73417 13.2001 1.75759 13.2236L2.42462 13.8906C2.44806 13.914 2.47984 13.9272 2.51298 13.9272C2.54612 13.9272 2.5779 13.914 2.60134 13.8906L13.7287 2.76374C13.7403 2.75213 13.7495 2.73835 13.7558 2.72317C13.7621 2.708 13.7653 2.69173 13.7653 2.6753C13.7653 2.65888 13.7621 2.64261 13.7558 2.62744C13.7495 2.61226 13.7403 2.59848 13.7287 2.58687ZM2.3329 7.99999C3.63447 5.30937 5.47978 4.03124 8.00009 4.03124C8.85228 4.03124 9.62712 4.17749 10.3301 4.47484L9.23165 5.57327C8.71145 5.29572 8.1158 5.19271 7.5326 5.27944C6.94939 5.36617 6.4095 5.63805 5.99258 6.05498C5.57565 6.4719 5.30377 7.01179 5.21704 7.595C5.1303 8.17821 5.23331 8.77385 5.51087 9.29405L4.20743 10.5975C3.48603 9.96077 2.86415 9.09812 2.3329 7.99999ZM6.18759 7.99999C6.18786 7.72447 6.25313 7.45289 6.37808 7.20733C6.50303 6.96177 6.68414 6.74914 6.9067 6.58673C7.12926 6.42431 7.387 6.31668 7.65898 6.27259C7.93095 6.2285 8.20949 6.24918 8.47197 6.33296L6.27056 8.53437C6.21538 8.36162 6.18739 8.18134 6.18759 7.99999Z" fill="#B7B9CF"/>
+                            <path d="M7.93762 9.75C7.88355 9.75 7.83027 9.7475 7.77746 9.74265L6.95215 10.568C7.44854 10.7581 7.98937 10.8003 8.50926 10.6896C9.02915 10.5789 9.50583 10.3199 9.8817 9.94407C10.2576 9.56821 10.5165 9.09152 10.6272 8.57164C10.7379 8.05175 10.6957 7.51092 10.5056 7.01453L9.68027 7.83984C9.68512 7.89265 9.68762 7.94593 9.68762 8C9.68774 8.22984 9.64256 8.45746 9.55466 8.66984C9.46676 8.88221 9.33786 9.07518 9.17533 9.23771C9.0128 9.40023 8.81983 9.52913 8.60746 9.61704C8.39508 9.70494 8.16747 9.75012 7.93762 9.75Z" fill="#B7B9CF"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="campo-mensaje"></p>
+                </div>
+            </div>
+            <!-- "No soy un robot" simulado (login.js) -->
+            <div class="captcha" role="checkbox" tabindex="0"><i class="captcha-casilla"></i>No soy un robot</div>
+            <p class="campo-mensaje" id="captcha-mensaje"></p>
+            <button class="boton boton-primario boton-grande" type="submit">Crear cuenta</button>
+            <span class="separador-o">o continuá con</span>
+            <div class="botones-sociales">
+                <button type="button" class="boton boton-social" data-red-social="Google"><b class="icono-google"><svg width="18" height="18" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.9888 12.7339C23.9888 11.7097 23.9071 10.9622 23.7304 10.1871H12.2393V14.81H18.9843C18.8484 15.9589 18.114 17.689 16.4821 18.8516L16.4592 19.0064L20.0925 21.8712L20.3442 21.8968C22.656 19.7237 23.9888 16.5264 23.9888 12.7339Z" fill="#4285F4"/>
+                        <path d="M12.2393 24.9141C15.5438 24.9141 18.3179 23.8067 20.3442 21.8967L16.4821 18.8516C15.4486 19.5852 14.0615 20.0973 12.2393 20.0973C9.00273 20.0973 6.25576 17.9243 5.27654 14.9208L5.13301 14.9332L1.35507 17.909L1.30566 18.0488C3.31829 22.1181 7.45238 24.9141 12.2393 24.9141Z" fill="#34A853"/>
+                        <path d="M5.27634 14.9208C5.01797 14.1457 4.86844 13.3152 4.86844 12.457C4.86844 11.5988 5.01797 10.7684 5.26275 9.99331L5.25591 9.82823L1.43062 6.80457L1.30547 6.86516C0.475969 8.5538 0 10.4501 0 12.457C0 14.464 0.475969 16.3602 1.30547 18.0488L5.27634 14.9208Z" fill="#FBBC05"/>
+                        <path d="M12.2393 4.8167C14.5374 4.8167 16.0877 5.8271 16.9717 6.67147L20.4258 3.23884C18.3044 1.23187 15.5438 0 12.2393 0C7.45238 0 3.31829 2.7959 1.30566 6.86517L5.26295 9.99332C6.25576 6.98979 9.00273 4.8167 12.2393 4.8167Z" fill="#EB4335"/>
+                        </svg>
+                    </b> Google</button>
+                <button type="button" class="boton boton-social" data-red-social="Facebook"><b class="icono-facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12C24 5.37262 18.6274 0 12 0C5.37262 0 0 5.37262 0 12C0 17.9895 4.38825 22.954 10.125 23.8542V15.4688H7.07812V12H10.125V9.35625C10.125 6.34875 11.9166 4.6875 14.6576 4.6875C15.9705 4.6875 17.3438 4.92188 17.3438 4.92188V7.875H15.8306C14.3399 7.875 13.875 8.80003 13.875 9.74906V12H17.2031L16.6711 15.4688H13.875V23.8542C19.6117 22.954 24 17.9896 24 12Z" fill="#1877F2"/>
+                        <path d="M16.6711 15.4688L17.2031 12H13.875V9.74906C13.875 8.79994 14.3399 7.875 15.8306 7.875H17.3438V4.92188C17.3438 4.92188 15.9705 4.6875 14.6575 4.6875C11.9166 4.6875 10.125 6.34875 10.125 9.35625V12H7.07812V15.4688H10.125V23.8542C10.7453 23.9514 11.3722 24.0001 12 24C12.6278 24.0001 13.2547 23.9514 13.875 23.8542V15.4688H16.6711Z" fill="white"/>
+                        </svg>
+                    </b> Facebook</button>
+            </div>
+            <a class="enlace" href="#login">¿Ya tenés cuenta? Iniciá sesión</a>
+        </form>
+    </div>
+
+    <!-- animacion de registro exitoso -->
+    <div class="registro-exitoso" id="pantalla-registro-exitoso" role="status" hidden>
+        <i class="confeti" style="--color-confeti:#7B61FF;--confeti-x:150px;--confeti-y:0px"></i>
+        <i class="confeti" style="--color-confeti:#FF6600;--confeti-x:179px;--confeti-y:65px"></i>
+        <i class="confeti" style="--color-confeti:#93E4BC;--confeti-x:176px;--confeti-y:148px"></i>
+        <i class="confeti" style="--color-confeti:#EDEEF6;--confeti-x:75px;--confeti-y:130px"></i>
+        <i class="confeti" style="--color-confeti:#9B86FF;--confeti-x:33px;--confeti-y:187px"></i>
+        <i class="confeti" style="--color-confeti:#7B61FF;--confeti-x:-40px;--confeti-y:227px"></i>
+        <i class="confeti" style="--color-confeti:#FF6600;--confeti-x:-75px;--confeti-y:130px"></i>
+        <i class="confeti" style="--color-confeti:#93E4BC;--confeti-x:-146px;--confeti-y:122px"></i>
+        <i class="confeti" style="--color-confeti:#EDEEF6;--confeti-x:-216px;--confeti-y:79px"></i>
+        <i class="confeti" style="--color-confeti:#9B86FF;--confeti-x:-150px;--confeti-y:0px"></i>
+        <i class="confeti" style="--color-confeti:#7B61FF;--confeti-x:-179px;--confeti-y:-65px"></i>
+        <i class="confeti" style="--color-confeti:#FF6600;--confeti-x:-176px;--confeti-y:-148px"></i>
+        <i class="confeti" style="--color-confeti:#93E4BC;--confeti-x:-75px;--confeti-y:-130px"></i>
+        <i class="confeti" style="--color-confeti:#EDEEF6;--confeti-x:-33px;--confeti-y:-187px"></i>
+        <i class="confeti" style="--color-confeti:#9B86FF;--confeti-x:40px;--confeti-y:-227px"></i>
+        <i class="confeti" style="--color-confeti:#7B61FF;--confeti-x:75px;--confeti-y:-130px"></i>
+        <i class="confeti" style="--color-confeti:#FF6600;--confeti-x:146px;--confeti-y:-122px"></i>
+        <i class="confeti" style="--color-confeti:#93E4BC;--confeti-x:216px;--confeti-y:-79px"></i>
+       
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/><path d="M30 52l14 14 27-30"/></svg>
+        <h2>¡Bienvenido a la red, <span id="nombre-bienvenida"></span>!</h2>
+        <p>Tu cuenta está lista. Te llevamos al inicio…</p>
+    </div>
+
+    <script src="js/games-data.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
